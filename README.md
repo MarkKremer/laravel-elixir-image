@@ -6,7 +6,7 @@ To convert all PSD files in the `resources/assets/img` directory to PNG, JPG and
 ```
 var elixir = require('laravel-elixir');
 
-require('./index');
+require('laravel-elixir-image');
 
 elixir(function(mix) {
     mix.img({
