@@ -1,3 +1,5 @@
+*Warning: I just created this extension and I still have to get the little bugs out.*
+
 # laravel-elixir-image
 A Laravel Elixir image conversion extension using ImageMagick. This extension makes it possible to automatically convert your images into various formats such as PNG, JPG and WebP.
 
@@ -20,8 +22,10 @@ elixir(function(mix) {
 All arguments are optional. If left away, the second argument is generated using the convert option and will match all files for which a convertion is defined.
 
 ## Frequently asked questions
-#### Supported formats
+#### What image formats does it support?
 The extension should support every file format Image Magick supports. I have tested it with a PSD (Photoshop) file as image source and PSD, PNG, JPG and WebP files as output.
+#### Does it run on other platforms than Windows?
+Currently not, however it does only need the ImageMagick convert binary for your platform so it shouldn't be that difficult to do it yourself. The location of the binary can be changed in config.js.
 
 ## Licence
 Laravel-elixir-image is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it uses an ImageMagick executable which comes with it's own license:
