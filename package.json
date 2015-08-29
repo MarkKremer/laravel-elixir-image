@@ -1,0 +1,35 @@
+{
+  "name": "laravel-elixir-image",
+  "version": "1.0.0",
+  "description": "Laravel Elixir image conversion extension",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
+    "laravel-elixir": "^2.3.13",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "laravel",
+    "elixir",
+    "image",
+    "psd",
+    "png",
+    "jpeg",
+    "jpg",
+    "webp",
+    "gulp",
+    "resources",
+    "assets",
+    "convert",
+    "imagick",
+    "imagemagick",
+    "magick"
+  ],
+  "author": "Mark Kremer <mail@markkremer.nl> (http://markkremer.nl)",
+  "license": "ISC"
+}
