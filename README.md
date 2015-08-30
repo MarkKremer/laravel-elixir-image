@@ -26,6 +26,8 @@ All arguments are optional. If left away, the second argument is generated using
 The extension should support every file format Image Magick supports. I have tested it with a PSD (Photoshop) file as image source and PSD, PNG, JPG and WebP files as output.
 #### Does it run on other platforms than Windows?
 Currently not, however it does only need the ImageMagick convert binary for your platform so it shouldn't be that difficult to do it yourself. The location of the binary can be changed in config.js.
+#### Which Elixer versions does it support?
+I'm trying to make the extension both compatible with Elixir ^2.0.0 and ^3.0.0. At the time of writing a fresh composer install of Laravel ships with Elixir 2 although Elixir 3 comes with some nice changes so I don't want to exclude either one of them.
 
 ## Licence
 Laravel-elixir-image is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it uses an ImageMagick executable which comes with it's own license:
