@@ -1,11 +1,18 @@
+[![npm version](https://badge.fury.io/js/laravel-elixir-image.svg)](http://badge.fury.io/js/laravel-elixir-image)
+
 *Warning: I just created this extension and I still have to get the little bugs out.*
 
 # laravel-elixir-image
 A Laravel Elixir image conversion extension using ImageMagick. This extension makes it possible to automatically convert your images into various formats such as PNG, JPG and WebP.
 
-## Quick use
-To convert all PSD files in the `resources/assets/img` directory to PNG, JPG and WebP files in the `public/img`, use the following code:
+## Install
+```sh
+$ npm i laravel-elixir-image
 ```
+
+## Usage
+To convert all PSD files in the `resources/assets/img` directory to PNG, JPG and WebP files in the `public/img`, use the following code:
+```javascript
 var elixir = require('laravel-elixir');
 
 require('laravel-elixir-image');
