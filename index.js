@@ -1,9 +1,28 @@
 var elixir = require('laravel-elixir'),
     gulp = require('gulp'),
+    path = require('path'),
     config = require('./config'),
     util = require('./lib/util'),
     logger = require('./lib/logger'),
     compiler = require('./lib/compiler').compiler;
+
+// Backward compatibility for Elixir notifications.
+var notification;
+if(elixir.Notification) {
+    // Elixir 3.0.0
+    notification = function (message) {
+        return new elixir.Notification(message);
+    }
+} else {
+    // Elixir 2.0.0
+    var Notification = require(path.join(
+        path.dirname(require.resolve('laravel-elixir')),
+        'ingredients/commands/Notification'
+    ));
+    notification = function (message) {
+        return new Notification().message(message);
+    }
+}
 
 /**
  * Create the compilation pipeline.
@@ -29,7 +48,7 @@ function compile(options) {
                 this.emit('end');
             })
             .pipe(gulp.dest(basedir))
-            .pipe(new elixir.Notification(name + ' Compiled!'))
+            .pipe(notification(name + ' Compiled!'))
     );
 }
 
@@ -48,7 +67,7 @@ elixir.extend('img', function (options, src, output) {
     var paths = prepGulpPaths(src, output);
 
     // Add the gulp task to be executed by elixir.
-    new elixir.Task('image', function () {
+    function returnCompileTask() {
         return compile({
             name: 'Image',
             compiler: compiler,
@@ -57,8 +76,18 @@ elixir.extend('img', function (options, src, output) {
             task: this,
             pluginOptions: options
         });
-    })
-        .watch(paths.src.path);
+    }
+
+    if(elixir.Task) {
+        // Elixir 3.0.0
+        new elixir.Task('image', returnCompileTask)
+            .watch(paths.src.path);
+    } else {
+        // Elixir 2.0.0
+        gulp.task('image', returnCompileTask);
+        this.registerWatcher('image', paths.src.path);
+        return this.queueTask('image');
+    }
 });
 
 /**
@@ -69,8 +98,26 @@ elixir.extend('img', function (options, src, output) {
  * @return {object}
  */
 var prepGulpPaths = function(src, output) {
-    var gulpPaths = new elixir.GulpPaths()
-        .src(src, config.source.path)
-        .output(output || config.destination.path);
-    return gulpPaths;
+    if(elixir.GulpPaths) {
+        // Elixir 3.0.0
+        var gulpPaths = new elixir.GulpPaths()
+            .src(src, config.source.path)
+            .output(output || config.destination.path);
+        return gulpPaths;
+    } else {
+        // Elixir 2.0.0
+        var sourcePath = path.join(config.source.path, src),
+            destPath = output || config.destination.path;
+
+        return {
+            src: {
+                path: sourcePath,
+                baseDir: path.dirname(sourcePath)
+            },
+            output: {
+                path: destPath,
+                baseDir: destPath
+            }
+        };
+    }
 }

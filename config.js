@@ -6,10 +6,12 @@ module.exports = {
         convert: path.join(__dirname, 'imagemagick/convert')
     },
     source: {
-        path: path.join(elixir.config.assetsPath, 'img') // resources/assets/img
+                     /* Elixir 3.0.0                Elixir 2.0.0 */
+        path: path.join(elixir.config.assetsPath || elixir.config.assetsDir, 'img') // resources/assets/img
     },
     destination: {
-        path: path.join(elixir.config.publicPath, 'img') // public/img
+                     /* Elixir 3.0.0                Elixir 2.0.0 */
+        path: path.join(elixir.config.publicPath || elixir.config.publicDir, 'img') // public/img
     },
     convertSameType: false,
     convert: {
