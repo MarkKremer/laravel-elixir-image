@@ -36,7 +36,7 @@ Currently not, however it does only need the ImageMagick convert binary for your
 #### Which Elixer versions does it support?
 I'm trying to make the extension both compatible with Elixir ^2.0.0 and ^3.0.0. At the time of writing a fresh composer install of Laravel ships with Elixir 2 although Elixir 3 comes with some nice changes so I don't want to exclude either one of them.
 
-## Licence
+## License
 Laravel-elixir-image is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT). However, it uses an ImageMagick executable which comes with it's own license:
 > Copyright 2015 Mark Kremer
 > 
