@@ -29,6 +29,8 @@ node_modules
 # Testing files
 resources
 public
+gulpfile.js
+laravel-elixir-image-*.tgz
 
 # IDE files
 .idea
