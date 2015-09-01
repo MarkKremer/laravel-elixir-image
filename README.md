@@ -7,7 +7,7 @@ A Laravel Elixir image conversion extension using ImageMagick. This extension ma
 
 ## Install
 ```sh
-$ npm i laravel-elixir-image
+$ npm i laravel-elixir-image --save-dev
 ```
 
 ## Usage
